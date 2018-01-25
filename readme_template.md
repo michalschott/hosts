@@ -93,8 +93,6 @@ target.  Default is `0.0.0.0`.
 that appear on the same line as domains.  The default is `false` since some
 router-based implementations can't handle comments in-line with hosts.
 
-`--skipstatichosts`, or `-s`: `false` (default) or `true`,
-
 `--noupdate`, or `-n`: skip fetching updates from hosts data sources.
 
 `--output <subfolder>`, or `-o <subfolder>`: place the generated source file
@@ -105,6 +103,11 @@ in a subfolder.  If the subfolder does not exist, it will be created.
 `--skipstatichosts`, or `-s`: `false` (default) or `true`, omit the standard
 section at the top, containing lines like `127.0.0.1 localhost`.  This is
 useful for configuring proximate DNS services on the local network.
+
+`--compress`, or `-c`: `false` (default) or `true`, *Compress* the hosts file 
+ignoring non-necessary lines (empty lines and comments) and putting multiple 
+domains in each line. Reducing the number of lines of the hosts file improves 
+the performances under Windows (with DNS Client service enabled).
 
 ## How do I control which sources are unified?
 
@@ -143,6 +146,27 @@ into the final hosts file.
 
 The `whitelist` is not tracked by git, so any changes you make won't be
 overridden when you `git pull` this repo  from `origin` in the future.
+
+## How can I contribute hosts records?
+
+If you discover sketchy domains you feel should be included here, here are some ways to contribute them.
+
+### Option 1: contact one of our hosts sources
+
+The best way to get new domains included is to submit an issue to any of the data providers whose home pages are [listed here](https://github.com/StevenBlack/hosts#sources-of-hosts-data-unified-in-this-variant). This is best because once you submit new domains, they will be curated and updated by the dedicated folks who maintain these sources.
+
+
+### Option 2: add your domains to Steven Black's personal data file
+
+Fork this hosts this repo and add your links to [https://github.com/StevenBlack/hosts/blob/master/data/StevenBlack/hosts](https://github.com/StevenBlack/hosts/blob/master/data/StevenBlack/hosts).
+
+Then, submit a pull request.
+
+**WARNING**: this is less desireable than Option 1 because the ongoing curation falls on us and what you've just done is created more work for us.
+
+### Option 3: create your own hosts list as a repo on Github
+
+If you're able to curate your own collection of sketchy domains, then curate your own hosts list.  Then signal the existance of your remo as [a new issue](https://github.com/StevenBlack/hosts/issues) and we may include your new repo into the collection of sources we pull whenever we create new versions.
 
 
 ## What is a hosts file?
